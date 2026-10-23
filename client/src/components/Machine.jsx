@@ -137,7 +137,7 @@ export default function Machine({
             x="500"
             y="45"
             width="250"
-            height="30"
+            height="35"
             rx="6"
             fill="#ffb72e"
             stroke="#292c35"
@@ -152,10 +152,10 @@ export default function Machine({
           <g className="machine-press-head">
             <rect
               x="612"
-              y="93"
+              y="85"
               width="26"
-              height="38"
-              rx="3"
+              height="45"
+              rx="4"
               fill="#777b83"
               stroke="#292c35"
               strokeWidth="4"
