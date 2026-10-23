@@ -1,0 +1,38 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#FFFDF9"/>
+
+  <!-- Vault body -->
+  <path d="M13 17 24 10H49Q54 10 54 16V48Q54 53 49 53H15Q10 53 10 48V22Q10 19 13 17Z"
+        fill="#FF4B25"/>
+
+  <!-- Dark vault frame -->
+  <rect x="19" y="10" width="35" height="43" rx="5"
+        fill="#202127"/>
+
+  <!-- Vault door -->
+  <rect x="22" y="13" width="29" height="37" rx="3"
+        fill="#FFFDF9"/>
+
+  <!-- Door hinges -->
+  <rect x="51" y="21" width="4" height="6" rx="1" fill="#202127"/>
+  <rect x="51" y="36" width="4" height="6" rx="1" fill="#202127"/>
+
+  <!-- Central lock ring -->
+  <circle cx="36.5" cy="31.5" r="11.5"
+          fill="none" stroke="#202127" stroke-width="3.5"/>
+
+  <!-- Chain link: orange -->
+  <path d="M35 27.5 38 24.5A4.5 4.5 0 0 1 44.4 30.9L40.8 34.5"
+        fill="none" stroke="#FFAA22" stroke-width="4.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Chain link: orange-red -->
+  <path d="M38 35.5 35 38.5A4.5 4.5 0 0 1 28.6 32.1L32.2 28.5"
+        fill="none" stroke="#FF4B25" stroke-width="4.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Vault feet -->
+  <path d="M17 53V57H23V53M43 53V57H49V53"
+        fill="#202127"/>
+</svg>

@@ -1,0 +1,13 @@
+import { useState } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { ArrowLeft, ArrowRight, Link2, LoaderCircle } from 'lucide-react';
+import api from '../lib/api.js';
+import { useAuth } from '../context/AuthContext.jsx';
+import Logo from '../components/Logo.jsx';
+export default function AuthPage() {
+  const [params] = useSearchParams(); const isRegister = params.get('mode') === 'register';
+  const [name, setName] = useState(''); const [email, setEmail] = useState(''); const [password, setPassword] = useState('');
+  const [error, setError] = useState(''); const [busy, setBusy] = useState(false); const { signIn } = useAuth(); const navigate = useNavigate();
+  async function submit(e) { e.preventDefault(); setBusy(true); setError(''); try { const { data } = await api.post(`/auth/${isRegister ? 'register' : 'login'}`, { name, email, password }); signIn(data); navigate('/analytics'); } catch (err) { setError(err.response?.data?.message || 'Could not connect to the API. Is the server running?'); } finally { setBusy(false); } }
+  return <main className="auth-page"><header className="auth-header"><Logo/><Link to="/" className="back-link"><ArrowLeft size={16}/> Back home</Link></header><section className="auth-card"><div className="auth-icon"><Link2 size={27}/></div><p className="eyebrow">YOUR LINKS, IN ONE PLACE</p><h1>{isRegister ? 'Make room for shorter links.' : 'Welcome back.'}</h1><p className="muted">{isRegister ? 'Create an account to save links and see what gets clicked.' : 'Sign in to see your links and their performance.'}</p><form onSubmit={submit} className="auth-form">{isRegister && <label>Full name<input autoComplete="name" value={name} onChange={e=>setName(e.target.value)} placeholder="Alex Morgan" required minLength={2}/></label>}<label>Email address<input type="email" autoComplete="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder="you@example.com" required/></label><label>Password<input type="password" autoComplete={isRegister?'new-password':'current-password'} value={password} onChange={e=>setPassword(e.target.value)} placeholder="At least 8 characters" minLength={8} required/></label>{error && <p className="form-error">{error}</p>}<button className="primary-btn full-btn" disabled={busy}>{busy?<LoaderCircle className="spin" size={18}/>:isRegister?'Create account':'Sign in'} {!busy&&<ArrowRight size={17}/>}</button></form><p className="auth-switch">{isRegister?'Already have an account?':'New around here?'} <Link to={isRegister?'/login':'/login?mode=register'}>{isRegister?'Sign in':'Create an account'}</Link></p><p className="auth-footnote">No account needed to shorten a link. Really.</p></section></main>;
+}

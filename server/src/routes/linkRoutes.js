@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { createLink, deleteLink, getAnalytics, listLinks, toggleLink } from '../controllers/linkController.js';
+import { optionalAuth, protect } from '../middleware/auth.js';
+const router = Router();
+router.post('/', optionalAuth, createLink);
+router.get('/', protect, listLinks);
+router.get('/analytics', protect, getAnalytics);
+router.delete('/:id', protect, deleteLink);
+router.patch('/:id/toggle', protect, toggleLink);
+export default router;
