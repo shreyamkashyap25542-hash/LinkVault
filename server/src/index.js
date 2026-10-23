@@ -12,7 +12,7 @@ import { asyncHandler } from './utils/asyncHandler.js';
 const app = express();
 app.set('trust proxy', 1);
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
-app.use(cors({ origin: (process.env.CLIENT_URL || 'http://localhost:5173').split(',').map(s => s.trim()), credentials: false }));
+app.use(cors({ origin: (process.env.CLIENT_URL || 'http://localhost:5173','https://linkvault-tau-eight.vercel.app').split(',').map(s => s.trim()), credentials: false }));
 app.use(express.json({ limit: '20kb' }));
 app.use('/api', rateLimit({ windowMs: 15 * 60 * 1000, limit: 300, standardHeaders: 'draft-7', legacyHeaders: false }));
 app.use('/api/auth', rateLimit({ windowMs: 15 * 60 * 1000, limit: 30, standardHeaders: 'draft-7', legacyHeaders: false }));
