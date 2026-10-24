@@ -282,6 +282,29 @@ export default function Machine({
           </g>
 
           <rect x="1004" y="104" width="78" height="6" rx="3" fill="#ffb72e" />
+          {result && !busy && (
+  <g className="package-ready-label">
+    <rect
+      x="982"
+      y="70"
+      width="120"
+      height="26"
+      rx="6"
+      fill="#23834c"
+    />
+    <text
+      x="1042"
+      y="87"
+      textAnchor="middle"
+      fill="#fffdfa"
+      fontSize="12"
+      fontWeight="800"
+      letterSpacing="1"
+    >
+      ✓ PACKED
+    </text>
+  </g>
+)}
         </g>
       </svg>
 
